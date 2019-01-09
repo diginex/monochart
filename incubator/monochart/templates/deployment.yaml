@@ -64,12 +64,15 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: storage
-      {{- if .Values.persistence }}
-      {{- if .Values.persistence.enabled }}
-        - mountPath: /dummy
-          name: storage
-      {{- end }}
-      {{- end }}
+        {{- if .Values.persistence }}
+        {{- if .Values.persistence.enabled }}
+        - name: storage
+          mountPath: {{ .Values.persistence.mountPath }}
+          {{- if .Values.persistence.subPath }}
+          subPath: {{ .Values.persistence.subPath }}
+          {{- end }}
+        {{- end }}
+        {{- end }}
 {{ include "monochart.files.volumeMounts" . | indent 8 }}
 {{ include "monochart.files.deploymentVolumeMounts" . | indent 8 }}
 {{- with .Values.probes }}
