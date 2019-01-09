@@ -99,24 +99,3 @@ VolumeMounts template block for deployable resources
 {{- end }}
 {{- end -}}
 {{- end -}}
-
-{{/*
-VolumeMounts template block for deployable resources
-*/}}
-{{- define "monochart.files.deploymentVolumeMounts" -}}
-{{- range $name, $config := .Values.deploymentVolumeMounts -}}
-{{- if $config.enabled }}
-- mountPath: {{ default (printf "/%s" $name) $config.mountPath }}
-  name: {{ $name }}
-{{- end }}
-{{- end -}}
-{{- range $name, $secret := .Values.secrets -}}
-{{- if $secret.enabled }}
-{{- if not ( empty $secret.files ) }}
-- mountPath: {{ default (printf "/%s" $name) $secret.mountPath }}
-  name: secret-{{ $name }}-files
-  readOnly: true
-{{- end }}
-{{- end }}
-{{- end -}}
-{{- end -}}
