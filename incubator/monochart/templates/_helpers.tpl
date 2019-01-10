@@ -86,6 +86,9 @@ VolumeMounts template block for deployable resources
 {{- if not ( empty $config.files ) }}
 - mountPath: {{ default (printf "/%s" $name) $config.mountPath }}
   name: config-{{ $name }}-files
+{{- if not ( empty $config.subPath ) }}
+  subPath: {{ default (printf "/%s" $name) $config.subPath }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end -}}
