@@ -49,6 +49,18 @@ env:
     value: {{ default "" $value | quote }}
 {{- end }}
 {{- end }}
+env:
+{{- range $name, $config := $root.Values.configMaps }}
+{{- if $config.enabled }}
+{{- range $name, $value := $config.env }}
+  - name: {{ $name }}
+    valueFrom:
+      configMapKeyRef:
+        name: xxxxx
+        key: {{ $name}}
+{{- end }}
+{{- end }}
+{{- end }}
 {{- end -}}
 
 
