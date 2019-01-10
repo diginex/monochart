@@ -55,6 +55,9 @@ spec:
         {{- if .Values.deployment.pod.args }}
         args: {{ .Values.deployment.pod.args }}
         {{- end }}
+{{- with .Values.deployment.pod.securityContext }}
+        securityContext:
+{{ toYaml . | indent 10 }}
         ports:
 {{- range $name, $port := .Values.service.ports }}
           - name: {{ $name }}
