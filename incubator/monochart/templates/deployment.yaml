@@ -44,6 +44,10 @@ spec:
 {{- end }}
 {{- end }}
     spec:
+{{- with .Values.deployment.pod.securityContext }}
+      securityContext:
+{{ toYaml . | indent 8 }}
+{{- end }}
       containers:
       - name: {{ include "common.name" . }}
         image: {{ required "image.repository is required!" .Values.image.repository }}:{{ required "image.tag is required!" .Values.image.tag }}
@@ -55,10 +59,6 @@ spec:
         {{- if .Values.deployment.pod.args }}
         args: {{ .Values.deployment.pod.args }}
         {{- end }}
-{{- with .Values.deployment.pod.securityContext }}
-      securityContext:
-{{ toYaml . | indent 8 }}
-{{- end }}
         ports:
 {{- range $name, $port := .Values.service.ports }}
           - name: {{ $name }}
