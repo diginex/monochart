@@ -319,3 +319,17 @@ ingress:
 #    - secretName: server-tls
 #      hosts:
 #      - domain.com
+
+virtualService:
+  enabled: false
+#  hosts:
+#  - "test.example.com"
+#  gateways:
+#  - default/ingressgateway
+#  routes:
+#    default:
+#      matchIPs:
+#      - 61.92.193.124
+#      destination:
+#        host: example-service.example.svc.cluster.local
+#        port: 3000

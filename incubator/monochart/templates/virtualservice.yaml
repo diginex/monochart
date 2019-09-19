@@ -1,0 +1,31 @@
+{{- if .Values.virtualService.enabled -}}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "common.fullname" . }}
+spec:
+  hosts:
+{{- range $host := .Values.virtualService.hosts }}
+  - {{ $host }}
+{{- end }}
+  gateways:
+{{- range $host := .Values.virtualService.gateways }}
+  - {{ $host }}
+{{- end }}
+  http:
+{{- range $name, $route := .Values.virtualService.routes }}
+  - route:
+    - destination:
+        host: {{ $route.destination.host }}
+        port:
+          number: {{ $route.destination.port }}
+{{- if $route.matchIPs }}
+    match:
+{{- end }}
+{{- range $ip := $route.matchIPs }}
+    - headers:
+        x-envoy-external-address:
+          exact: {{ $ip }}
+{{- end }}
+{{- end }}
+{{- end -}}
