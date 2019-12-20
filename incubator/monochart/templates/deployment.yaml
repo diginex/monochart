@@ -44,6 +44,9 @@ spec:
 {{- end }}
 {{- end }}
     spec:
+{{- if .Values.deployment.pod.hostname }}
+      hostname: {{ .Values.deployment.pod.hostname }}
+{{- end }}
 {{- with .Values.deployment.pod.securityContext }}
       securityContext:
 {{ toYaml . | indent 8 }}

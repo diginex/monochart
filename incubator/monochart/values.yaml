@@ -72,6 +72,7 @@ deployment:
     labels: {}
     # command:
     args: []
+    # hostname: DIGINEXFIS
 
 statefulset:
   enabled: false
