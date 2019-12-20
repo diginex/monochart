@@ -98,6 +98,9 @@ VolumeMounts template block for deployable resources
 - mountPath: {{ default (printf "/%s" $name) $secret.mountPath }}
   name: secret-{{ $name }}-files
   readOnly: true
+{{- if not ( empty $secret.subPath ) }}
+  subPath: {{ default (printf "/%s" $name) $secret.subPath }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end -}}
