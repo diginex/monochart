@@ -51,6 +51,10 @@ spec:
       securityContext:
 {{ toYaml . | indent 8 }}
 {{- end }}
+{{- with .Values.deployment.pod.initContainers }}
+      initContainers:
+{{ toYaml . | indent 8 }}
+{{- end }}
       containers:
       - name: {{ include "common.name" . }}
         image: {{ required "image.repository is required!" .Values.image.repository }}:{{ required "image.tag is required!" .Values.image.tag }}
