@@ -2,8 +2,31 @@ apiVersion: v1
 entries:
   monochart:
   - apiVersion: v1
+    appVersion: 0.8.3
+    created: "2020-06-24T13:58:32.342406173+08:00"
+    dependencies:
+    - name: common
+      repository: https://kubernetes-charts-incubator.storage.googleapis.com/
+      version: 0.0.4
+    - condition: dockercfg.enabled
+      name: dockercfg
+      repository: https://charts.cloudposse.com/incubator/
+      version: 0.1.0
+    description: A declarative helm chart for deploying common types of services on
+      Kubernetes
+    digest: 0d7d4b8a607f10e0dee8fbbecf6aea314fffdbf521dfd4f1b179e03b36ab2fed
+    home: https://github.com/cloudposse/charts/tree/master/incubator/monochart
+    icon: https://pbs.twimg.com/profile_images/1074867981891452928/p8IPSNEh_400x400.jpg
+    maintainers:
+    - email: josiah.choi@diginex.com
+      name: Josiah Choi
+    name: monochart
+    urls:
+    - https://diginex.github.io/monochart/monochart-0.8.3.tgz
+    version: 0.8.3
+  - apiVersion: v1
     appVersion: 0.8.2
-    created: "2020-06-18T16:57:06.443653453+08:00"
+    created: "2020-06-24T13:58:32.338797213+08:00"
     dependencies:
     - name: common
       repository: https://kubernetes-charts-incubator.storage.googleapis.com/
@@ -22,6 +45,6 @@ entries:
       name: Josiah Choi
     name: monochart
     urls:
-    - https://github.com/diginex/monochart/releases/download/0.8.2/monochart-0.8.2.tgz
+    - https://diginex.github.io/monochart/monochart-0.8.2.tgz
     version: 0.8.2
-generated: "2020-06-18T16:57:06.436250154+08:00"
+generated: "2020-06-24T13:58:32.334163841+08:00"
