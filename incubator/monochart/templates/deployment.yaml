@@ -56,6 +56,17 @@ spec:
 {{ toYaml . | indent 8 }}
 {{- end }}
       containers:
+      {{- if .Values.deployment.pod.extraContainer }}
+      - name: extracontainer
+        image: {{ .Values.deployment.pod.extraContainer.image }}
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+          requests:
+            cpu: 80m
+            memory: 64Mi
+      {{- end }}
       - name: {{ include "common.name" . }}
         image: {{ required "image.repository is required!" .Values.image.repository }}:{{ required "image.tag is required!" .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}

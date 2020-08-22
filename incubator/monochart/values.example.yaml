@@ -64,3 +64,5 @@ deployment:
     ## Read more about kube2iam to provide access to s3 https://github.com/jtblin/kube2iam
     #  iam.amazonaws.com/role: role-arn
     labels: {}
+    extraContainer:
+      image: localstack/localstack

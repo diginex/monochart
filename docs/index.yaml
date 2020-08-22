@@ -3,6 +3,29 @@ entries:
   monochart:
   - apiVersion: v1
     appVersion: 0.8.3
+    created: "2020-08-22T18:23:39.062859384+08:00"
+    dependencies:
+    - name: common
+      repository: https://kubernetes-charts-incubator.storage.googleapis.com/
+      version: 0.0.4
+    - condition: dockercfg.enabled
+      name: dockercfg
+      repository: https://charts.cloudposse.com/incubator/
+      version: 0.1.0
+    description: A declarative helm chart for deploying common types of services on
+      Kubernetes
+    digest: c054226eb18fe7137724931bd278a7c627458726c0db3ebe05e1e999b05c107d
+    home: https://github.com/cloudposse/charts/tree/master/incubator/monochart
+    icon: https://pbs.twimg.com/profile_images/1074867981891452928/p8IPSNEh_400x400.jpg
+    maintainers:
+    - email: josiah.choi@diginex.com
+      name: Josiah Choi
+    name: monochart
+    urls:
+    - https://github.com/diginex/monochart/releases/download/0.8.4/monochart-0.8.4.tgz
+    version: 0.8.4
+  - apiVersion: v1
+    appVersion: 0.8.3
     created: "2020-06-24T13:58:32.342406173+08:00"
     dependencies:
     - name: common
